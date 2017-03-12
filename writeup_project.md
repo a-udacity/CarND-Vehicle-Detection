@@ -15,7 +15,7 @@ The goals / steps of this project are the following:
 * Estimate a bounding box for vehicles detected.
 
 [//]: # (Image References)
-[image1]: ./output_images/car_.png
+[image1]: ./output_images/car.png
 [image1-1]: ./output_images/not_car.png
 [image2]: ./output_images/HOG_example.jpg
 [image3]: ./output_images/test1_sliding_window.jpg
