@@ -88,17 +88,12 @@ I trained a linear SVM using...
 I decided to search random window positions at random scales all over the image and came up with this (ok just kidding I didn't actually ;):
 
 ![alt text][image3]
-![alt text][image3-2]
-![alt text][image3-3]
-![alt text][image3-4]
-![alt text][image3-5]
 
 ####2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
 Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are some example images:
 
 ![alt text][image4]
-![alt text][image4-2]
 ![alt text][image4-3]
 ![alt text][image4-4]
 ![alt text][image4-5]
@@ -107,7 +102,7 @@ Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spat
 ### Video Implementation
 
 ####1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
-Here's a [link to my video result](./project_video.mp4)
+Here's a [link to my video result]([video1])
 
 
 ####2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
@@ -126,19 +121,15 @@ Here's an example result showing the heatmap from a series of frames of video, t
 
 ### Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from all six frames:
 ![alt text][image6]
-![alt text][image6-2]
 ![alt text][image6-3]
 ![alt text][image6-4]
 ![alt text][image6-5]
 
 ### Here the resulting bounding boxes are drawn onto the last frame in the series:
 ![alt text][image7]
-![alt text][image7-2]
 ![alt text][image7-3]
 ![alt text][image7-4]
 ![alt text][image7-5]
-
-
 
 ---
 
