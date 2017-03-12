@@ -15,9 +15,8 @@ The goals / steps of this project are the following:
 * Estimate a bounding box for vehicles detected.
 
 [//]: # (Image References)
-[image1]: ./output_images/car.png
-[image1-1]: ./output_images/not_car.png
-[image2]: ./output_images/HOG_example.jpg
+[image1]: ./output_images/car_not_car.png
+[image2]: ./output_images/HOG_example.png
 [image3]: ./output_images/test1_sliding_window.jpg
 [image3-2]: ./output_images/test2_sliding_window.jpg
 [image3-3]: ./output_images/test3_sliding_window.jpg
@@ -64,7 +63,6 @@ The code for this step is contained in the first code cell of the IPython notebo
 I started by reading in all the `vehicle` and `non-vehicle` images.  Here is an example of one of each of the `vehicle` and `non-vehicle` classes:
 
 ![alt text][image1]
-![alt text][image1-1]
 
 I then explored different color spaces and different `skimage.hog()` parameters (`orientations`, `pixels_per_cell`, and `cells_per_block`).  I grabbed random images from each of the two classes and displayed them to get a feel for what the `skimage.hog()` output looks like.
 
