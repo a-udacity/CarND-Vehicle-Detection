@@ -33,7 +33,7 @@
 ---
 ###Writeup / README
 
-The code for this step is contained in lines #66 through #81 of the file called `detection.py`).  
+The code for this step is contained in lines #66 through #81 of the file called `detection.py`.  
 
 I started by reading in all the `vehicle` and `non-vehicle` images (lines# 41 through lines # 44 of vehicleclassifier.py).  Here is an example of one of each of the `vehicle` and `non-vehicle` classes:
 
@@ -60,8 +60,9 @@ test_size=0.2,
 
 ```
 
-Trained a linear SVM classifier in vehicleclassifier.py in the VehicleClassifier class. T
-he class takes a dictionary of parameters upon initialization which allowed me to iterate through different combinations of parameters and select the highest test accuracy. I didn't use a validation set which is not good practice and the hold out set effectively bled into my training set by doing this parameter selection using test set.
+Trained a linear SVM classifier in vehicleclassifier.py in the VehicleClassifier class.
+The class takes a dictionary of parameters upon initialization which allowed me to iterate through different combinations of parameters and select the highest test accuracy. 
+I didn't use a validation set which is not good practice and the hold out set effectively bled into my training set by doing this parameter selection using test set.
 Since the model was generalizing well with my final parameters from Example.ipynb file, I could use it as is.
 
 I used four set of sliding windows (details in config.py under process['window_parameters']) in a narrow vertical band (400-580 pixels) and with 75% overlap. 
