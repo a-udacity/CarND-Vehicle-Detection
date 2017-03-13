@@ -127,7 +127,7 @@ class PlotWindow:
         windows = self.process._find_likely_windows(img)
         return draw_boxes(img, windows)
 
-    def plot_images(self, image, image_path, process_function, save=False, title='Sliding Window Image'):
+    def plot_images(self, image, image_path, process_function, name_suffix, save=False, title='Sliding Window Image'):
         f, (ax1, ax2) = plt.subplots(1, 2, figsize=(24, 9))
         f.suptitle(image_path, fontsize=50)
         f.tight_layout()
@@ -140,14 +140,14 @@ class PlotWindow:
         if save:
             name = os.path.basename(image_path)
             f.savefig(
-                './output_images/' + '{}{}'.format(name.split('.')[0], '_bounding_box.jpg'))  # save the figure to file
+                './output_images/' + '{}{}'.format(name.split('.')[0], name_suffix))  # save the figure to file
             plt.close(f)  # close the figure
 
-    def plot_all_test_images(self, process_function, title):
+    def plot_all_test_images(self, process_function, name_suffix, title):
         images = glob.glob('test_images/*.jpg')
         for image_path in images:
             img = mpimg.imread(image_path)
-            self.plot_images(img, image_path, process_function, True, title)
+            self.plot_images(img, image_path, process_function, name_suffix, True, title)
 
     def draw_bounding_box(self, image):
         image = self.process._normalize(image)
@@ -167,14 +167,18 @@ heat_map.plot_all_heatmap_images(True)
 ### Visualize Heat Measurement images
 heat_map.plot_all_measurements(True)
 
-
 plot_window = PlotWindow()
 ### Visualize Sliding Windows
 f = lambda image: plot_window.draw_sliding_window(image)
-plot_window.plot_all_test_images(f, 'Sliding Window Image')
+plot_window.plot_all_test_images(f, '_sliding_window.jpg', 'Sliding Window Image')
 
 ### Visualize Bounding Box
+f = lambda image: plot_window.process.process_image(image)
+plot_window.plot_all_test_images(f, '_output_bboxes.jpg', 'Processed Image')
+
+### Visualize Processed Image with Bounding Box (Final Bounding Box)
 f = lambda image: plot_window.draw_bounding_box(image)
-plot_window.plot_all_test_images(f, 'Bounding Box')
+plot_window.plot_all_test_images(f, '_bounding_box.jpg', 'Bounding Box')
+
 
 print("Done")
