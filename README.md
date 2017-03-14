@@ -62,8 +62,46 @@ test_size=0.2,
 
 Trained a linear SVM classifier in vehicleclassifier.py in the VehicleClassifier class.
 The class takes a dictionary of parameters upon initialization which allowed me to iterate through different combinations of parameters and select the highest test accuracy. 
-I didn't use a validation set which is not good practice and the hold out set effectively bled into my training set by doing this parameter selection using test set.
-Since the model was generalizing well with my final parameters from Example.ipynb file, I could use it as is.
+Before we train, we need to ensure that all the features are normalized. I used the StandardScaler in sklearn.
+I trained the SVM and checked SVM’s accuracy to see if it corresponds to the data that we’ve got till. 
+In the following experiment, I fixed the following parameters:
+ ```
+train_features size: (14000, 5568)
+train_labels size: (14000,)
+test_features size: (3500, 5568)
+test_labels size: (3500,)
+hog_channel : ALL
+hist_bins : 32
+hog_features : True
+cell_per_block : 2
+orientation : 8
+spatial_size : (16, 16)
+spatial_feature : True
+hist_feature : True
+pixel_per_cell : 8
+
+```
+The only variations are the color space and following is the accuracy of the model:
+Y channel of YCbCr (no spatial binning or color hist): 98.97%
+RGB (all 3)(no spatial binning or color hist): 96.07%
+SV channel of HSV(no spatial binning or color hist): 95.97%
+SV channel of HSV (with spatial binning or color hist): 98.51%
+HSV (all 3)(with spatial binning or color hist): 98.46%
+RGB (all 3)(with spatial binning or color hist): 97.73%
+
+The YCbCr was chosen after the above accuracy results. So that covers the feature extraction part of the Vehicle Detection.
+
+The final run of my model I got the following results:
+```
+Vehicles     : 8792
+Non-vehicles : 8968
+Using 8 orientations 8 pixels per cell 2 cells per block
+Feature vector length: 14208
+Pickling features
+Training time : 13s
+Test accuracy : 99.07%
+
+```
 
 I used four set of sliding windows (details in config.py under process['window_parameters']) in a narrow vertical band (400-580 pixels) and with 75% overlap. 
 After running some experiments these numbers gave me the least amount of false positives. 
